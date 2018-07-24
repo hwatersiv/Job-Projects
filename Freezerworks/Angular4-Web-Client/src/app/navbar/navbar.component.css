@@ -1,0 +1,14 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-opt-container {
+  padding: 0px;
+  display: flex;
+}
+
+.mat-button {
+  font-size: 16px;
+}

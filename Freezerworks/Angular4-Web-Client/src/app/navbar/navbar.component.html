@@ -1,0 +1,16 @@
+<mat-toolbar class='navbar-container'>
+  <img src='./../assets/FullLogo.png' (click)='returnHome()' />
+  <mat-nav-list class='nav-opt-container'>
+    <a mat-list-item [routerLink]="['/home']">Home</a>
+    <a mat-list-item>Contact Support</a>
+    <a mat-list-item>Notifications</a>
+    <button mat-button [matMenuTriggerFor]='user'>User</button>
+    <mat-menu #user='matMenu'>
+      <button class="mat-menu-item">Change Password</button>
+      <mat-divider></mat-divider>
+      <button class="mat-menu-item">Edit User Preferences</button>
+      <mat-divider></mat-divider>
+      <button class="mat-menu-item" (click)='logout()'>Logout</button>
+    </mat-menu>
+  </mat-nav-list>
+</mat-toolbar>

@@ -1,0 +1,202 @@
+<fwnavbar></fwnavbar>
+
+<br>
+
+<nav mat-tab-nav-bar>
+  <a mat-tab-link
+    class='link-tabs' 
+    *ngFor='let tab of tabs'
+    (click)='onTabClick(tab.toggleVar)'>
+      {{tab.title}}
+  </a>
+</nav>
+
+<!-- Assign Groups -->
+<div *ngIf='tabState === searchTabState?.group' class='tab-content-container'>
+  <div class='group-list'>
+    <mat-selection-list class='group-list' [(ngModel)]='assignedGroups'>
+      <mat-list-option *ngFor='let group of groups'
+                       [selected]='group.selected'
+                       [value]='group.name'>
+        {{group.name}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>
+
+<!-- Result Filters -->
+<div *ngIf='tabState === searchTabState?.filter' class='tab-content-container'>
+  <!-- Option 1 -->
+<!--   <div class='filter-list'>
+    <mat-selection-list class='group-list' [(ngModel)]='selectedResultFilters'>
+      <ng-container *ngFor='let filter of resultFilterChecks'>
+        <mat-list-option *ngIf="filter.value === 'limit'"
+                          [selected]='filter.selected'
+                          [value]='filter.value'>
+          <span>
+            Maximum number of records to return
+          </span>
+        </mat-list-option>
+        <mat-list-option *ngIf="filter.value === 'maxMin' && isSamplesOrAliquots()"
+                         [selected]='filter.selected'
+                         [value]='filter.value'>
+          <span>
+            {{returnRecordsIn === 'Samples' ? 'Minimum' : 'Maximum'}} number of aliquots per sample
+          </span>
+        </mat-list-option>
+        <mat-list-option *ngIf="filter.value === 'random'"
+                         [selected]='filter.selected'
+                         [value]='filter.value'>
+          <span>
+            Return random selection of {{returnRecordsIn}}
+          </span>
+        </mat-list-option>
+      </ng-container>
+    </mat-selection-list>
+  </div> -->
+  <!-- Result Filter Values -->
+<!--   <div class='filter-value-list'>
+    <mat-form-field class='filter-value-input' *ngIf="selectedFilterIncludes('limit')">
+      <input matInput type='number'
+             [(ngModel)]='resultFilters.limit'>
+      <mat-placeholder>Maximum number of records to return</mat-placeholder>
+    </mat-form-field>
+    <mat-form-field class='filter-value-input' *ngIf="selectedFilterIncludes('maxMin') && returnRecordsIn === 'Samples'">
+      <input matInput type='number'
+             [(ngModel)]='resultFilters.minAliquotsPerSample'>
+      <mat-placeholder>Minimum number of aliquots per sample</mat-placeholder>
+    </mat-form-field>
+    <mat-form-field class='filter-value-input' *ngIf="selectedFilterIncludes('maxMin') && returnRecordsIn === 'Aliquots'">
+      <input matInput type='number'
+             [(ngModel)]='resultFilters.maxAliquotsPerSampleToReturn'>
+      <mat-placeholder>Maximum number of aliquots per sample</mat-placeholder>
+    </mat-form-field>
+  </div> -->
+
+  <!-- Option 2 -->
+  <mat-selection-list class='group-list-option2' [(ngModel)]='selectedResultFilters'>
+    <ng-container *ngFor='let filter of resultFilterChecks'>
+      <ng-template [ngIf]="filter.value === 'limit'">
+        <mat-list-option  [selected]='filter.selected'
+                          [value]='filter.value'>
+          <div *ngIf="!selectedFilterIncludes('limit')">
+            <span>
+              Maximum number of records to return
+            </span>
+          </div>
+          <div *ngIf="selectedFilterIncludes('limit')">
+            <mat-form-field class='filter-value-input'>
+              <input matInput type='number'
+                     [(ngModel)]='resultFilters.limit'>
+              <mat-placeholder>Maximum number of records to return</mat-placeholder>
+            </mat-form-field>
+          </div>
+        </mat-list-option>
+      </ng-template>
+      <ng-template [ngIf]="filter.value === 'maxMin' && (returnRecordsIn === 'Samples' || returnRecordsIn === 'Aliquots')">
+        <mat-list-option  [selected]='filter.selected'
+                          [value]='filter.value'>
+          <div *ngIf="!selectedFilterIncludes('maxMin')">
+            <span>
+              {{returnRecordsIn === 'Samples' ? 'Minimum' : 'Maximum'}} number of aliquots per sample
+            </span>
+          </div>
+          <div *ngIf="selectedFilterIncludes('maxMin') && returnRecordsIn === 'Samples'">
+            <mat-form-field class='filter-value-input'>
+              <input matInput type='number'
+                     [(ngModel)]='resultFilters.limit'>
+              <mat-placeholder>Minimum number of aliquots per sample</mat-placeholder>
+            </mat-form-field>
+          </div>
+          <div *ngIf="selectedFilterIncludes('maxMin') && returnRecordsIn === 'Aliquots'">
+            <mat-form-field class='filter-value-input'>
+              <input matInput type='number'
+                     [(ngModel)]='resultFilters.maxAliquotsPerSampleToReturn'>
+              <mat-placeholder>Maximum number of aliquots per sample</mat-placeholder>
+            </mat-form-field>
+          </div>
+        </mat-list-option>
+      </ng-template>
+      <ng-template [ngIf]="filter.value === 'random'">
+        <mat-list-option  [selected]='filter.selected'
+                          [value]='filter.value'>
+          <span>
+            Return random selection of {{returnRecordsIn}}
+          </span>
+        </mat-list-option>
+      </ng-template>    
+    </ng-container>
+  </mat-selection-list>
+</div>
+
+<!-- Logic -->
+<div *ngIf='tabState === searchTabState?.logic' class='tab-content-container'>
+  Darkside
+</div>
+
+<br>
+
+<mat-card class='search-meta-container'>
+  <mat-form-field class='search-name-input'>
+    <input [(ngModel)]='searchName' matInput placeholder="Name" type="text">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Return Records In" [(value)]='returnRecordsIn'>
+      <mat-option *ngFor="let option of searchTables" [value]='option'>
+        {{ option }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>
+
+<br>
+
+<mat-card>
+  <div *ngFor='let searchLine of searchParams; let index = index'
+       class='search-creation-container'>
+    <mat-form-field class='field-input'>
+      <input matInput
+             [(ngModel)]='searchLine.field'
+             (click)='openFieldDialog(index)'
+             placeholder='Click to Select a Field'
+             type='text'>
+    </mat-form-field>
+    <mat-form-field class='comparator-input'>
+      <mat-select placeholder="Comparator" ([value])='searchLine.comparator'>
+        <mat-option>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class='value-input'>
+      <input matInput [matDatepicker]="picker"
+             placeholder="Choose a date"
+             ([ngModel])='searchLine.value'>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button class='delete-line' color='warn' (click)='removeLine(index)'>
+      X
+    </button>
+  </div>
+  <br>
+  <button mat-raised-button (click)='addLine()'>Add a Line</button>
+</mat-card>
+
+<br>
+
+<mat-card class='execute-container'>
+  <div>
+    <mat-form-field class='select-list-view'>
+      <mat-select placeholder="Select List View" [(value)]='selectedListView'>
+        <mat-option *ngFor='let listView of listViews'
+                    [value]='listView'>
+          {{listView}}              
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button
+            color='primary'
+            (click)='executeSearch()'>Execute Search</button>
+  </div>
+  <button mat-raised-button class='save-search'>Save Search</button>
+</mat-card>

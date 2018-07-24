@@ -1,0 +1,19 @@
+<div class="container">
+  <img mat-card-image class="login-img" src="./../assets/logo-vert.png">
+  <div class="input-container" (keyup.enter)="login()">
+    <mat-form-field class="login-input">
+      <input [(ngModel)]='username' matInput placeholder="Username" type="text">
+    </mat-form-field>
+    <mat-form-field class="login-input">
+      <input [(ngModel)]='password' matInput placeholder="Password" type="password">
+    </mat-form-field>    
+  </div>
+    <button mat-raised-button 
+            color="primary"
+            class="login-button"
+            (click)="login()">
+      Login
+    </button>
+  
+  <a mat-button routerLink="." class="change-password">Change Password</a>
+</div>

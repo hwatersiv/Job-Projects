@@ -1,0 +1,25 @@
+.field-navbar-container {
+  display: flex;
+  justify-content: space-between;
+  /*align-items: center;*/
+  width: 100%;
+  background-color: white;
+}
+
+.tab-button {
+  color: #3f51b5;
+}
+
+.field-search {
+  width: 100%;
+}
+
+.field-list-container {
+  column-count: 4;
+  column-width: auto;
+}
+
+.field-button {
+  text-align: left;
+  width: 18vw;
+}

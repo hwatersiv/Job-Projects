@@ -1,0 +1,86 @@
+.tab-content-container {
+  display: flex;
+  padding: 10px;
+}
+
+.link-tabs {
+  color: #3f51b5;
+}
+
+.group-list {
+  flex: 0 1 30%;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.group-list-option2 {
+  flex: 0 1 40%;
+  max-height: 300px;
+}
+
+.filter-list {
+  flex: 0 1 30%;
+  max-height: 300px;
+  margin-right: 30px;
+}
+
+.filter-value-list {
+  display: flex;
+  width: 20%;
+  max-height: 300px;
+  flex-direction: column;
+}
+
+.filter-value-input {
+  height: 48px;
+  width: 100%;
+}
+
+.search-meta-container {
+  display: flex;
+}
+
+.search-name-input {
+  margin-right: 30px;
+  width: 20%;
+}
+
+.search-creation-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.field-input {
+  margin-right: 30px;
+  width: 30%;
+}
+
+.comparator-input {
+  margin-right: 30px;
+  width: 30%;
+}
+
+.value-input {
+  margin-right: 30px;
+  width: 20%;
+}
+
+.delete-line {
+  width: 5%;
+  height: 5%;
+}
+
+.execute-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.select-list-view {
+  margin-right: 30px;
+}
+
+.save-search {
+  height: 5%;
+}

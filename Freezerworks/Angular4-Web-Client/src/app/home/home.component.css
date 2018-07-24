@@ -1,0 +1,33 @@
+.home-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.mat-accordion .mat-expansion-panel-spacing:first-child {
+  margin-top: 16px;
+}
+
+.mat-expansion-panel-header {
+  background-color: #3f51b5;
+  font-size: 1.25em;
+  color: white;
+}
+
+.mat-expansion-panel-header.mat-expanded[_ngcontent-c1] {
+  background-color: #3f51b5;
+  font-size: 1.25em;
+  color: white;
+}
+
+.mat-expansion-panel-header.mat-expanded:focus, 
+.mat-expansion-panel-header.mat-expanded:hover {
+  background-color: #3f51b5;
+  font-size: 1.25em;
+  color: white;
+}
+
+.mat-expansion-panel-content {
+  background-color: white;
+}

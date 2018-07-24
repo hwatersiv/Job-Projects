@@ -1,0 +1,30 @@
+<h2 class="mat-dialog-title">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <mat-button-toggle-group class='field-navbar-container'>
+        <mat-button-toggle
+           class='tab-button'
+           *ngFor="let table of tableTabs"
+           [value]='table'
+           (click)='filterFields(table)'>
+          {{ table }}
+       </mat-button-toggle>
+      </mat-button-toggle-group>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <mat-form-field class='field-search'>
+        <input matInput placeholder='Search'
+               type="search"
+               [(ngModel)]='searchTerm'
+               (keyup)='searchFilter()'>
+      </mat-form-field>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</h2>
+<mat-dialog-content>
+  <div class='field-list-container'>
+    <ng-container *ngFor='let field of fields'>
+      <button mat-button class='field-button' (click)='selectField(field)'>{{field.fieldDisplayName}}</button>
+    </ng-container>
+  </div>
+</mat-dialog-content>

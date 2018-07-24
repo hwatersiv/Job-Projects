@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="digitalGarageApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="img/" type="image/x-icon">
+
+<title></title>
+<!-- Cascading Style Sheets -->
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body ng-controller="DigitalGarageController">
+
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <a class="navbar-brand" href="/">
+                <img src="img/main-logo.png">
+            </a>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="pull-right" >
+                  <div class="login-register">
+                    <a href="#" class="login">Login</a>
+                    <a href="#" class="register">Register</a>
+                  </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ng-repeat="link in navlinks">
+                      <a href="{link.href}">{{link.name}}</a>
+                    </li>
+                    <li>
+                        <form class="navbar-form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </div> 
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+
+<main>
+ 
+  <section class="sec01">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>Building Software Just Got Easier</h1>
+          <p>
+            Digital Garage developers can quickly and easily build applications using either the web console, command-line interface, or integrated development environments.
+          </p>
+          <a href="#" class="green-but">Go / Code</a>
+        </div>
+        
+        <div class="col-xs-12">
+          <div class="building"><img src="img/crane.png" alt="crane"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="line">
+          <div class="line-in"></div>
+        </div>
+      </div>
+    </div>
+    <ul class="social">
+      <li ng-repeat="icon in icons">
+        <a href="#" >
+          <i class="{{icon.class}}" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <section class="sec02">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="all-programs">
+            <a ng-repeat="program in programs" href="#" ><img ng-src="{{program.src}}" alt="programs"/></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="sec03">
+    <div class="container-fluid">
+      <div class="row">
+       
+        <div class="applications col-xs-12">
+          <h2>Deploy Applications <strong>Not Infrastructure</strong></h2>
+          <p>Building applications easier so you can focus on what really matters</p>
+        </div>
+          <div class="all-app col-xs-12">
+            <div class="app" ng-repeat="application in applications">
+              <div class="app-in">
+                <div class="block-icon-img"><img ng-src="{{application.src}}" alt="applications"></div>
+                <h3>{{application.title}}</h3>
+                <p>
+                  {{application.desc}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <div class="col-xs-12">
+          <a href="#" class="green-but">Go / Code</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="sec04">
+    <div class="container-fluid">
+      <div class="row">
+        
+        <div class="prograns col-xs-12 col-md-7">
+          <img src="img/programs.png" alt="prograns">
+        </div>
+        
+        <div class="col-xs-12 col-md-5">
+          <h2>Getting started with your first project is easy</h2>
+          <p>
+            Example text example text example text example text exa mple text example text example text example text example text example text example text 
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="sec05">
+    <div class="container">
+      <div class="row">
+       
+        <div class="col-xs-12">
+          <div class="pricing-plan">
+            <h2>Simple <strong>Pricing Plan</strong></h2>
+            <p>
+              Digital Garage offers an introductory HELLO WORLD package to get your development environment started. As your development needs grow, you can adjust your resources at any point in time - no need to wait. No surprises and no long-term commitments.
+            </p>
+          </div>
+        </div>
+        
+        <div class="col-xs-12">
+          <div class="simple-pricing-plan">
+            <h5>Hello World</h5>
+            
+            <div class="plan">
+              <p>512MB Memory</p>
+              <p>1 CPU/Core</p>
+              <p>5GB SSD Storage</p>
+              <p>25GB Data Transfer</p>
+            </div>
+            
+            <div class="plan-price">
+              <p>$</p><p><strong>5</strong></p><p>/ month</p>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="col-xs-12">
+         
+          <div class="what-you-pay-tabs-all">
+           
+            <div ng-repeat="tab in tabs" class="what-you-pay" id="{{tab.id}}">
+              <h5>What You Pay</h5>
+
+              <div class="what-you-pay-txt">
+                <p>{{tab.memory}} Memory</p>
+                <p>{{tab.cpu}} CPU/Core</p>
+                <p>{{tab.storage}}GB SSD Storage</p>
+                <p>{{tab.dataTransfer}}GB Data Transfer</p>
+              </div>
+
+              <div class="month">
+                <p>${{tab.price}} per month</p>
+              </div>
+            </div>
+            
+          </div>
+         
+          <div class="what-you-pay-tabs">
+            <ul>
+              <li ng-repeat="tab in tabs">
+                <a href="#{{tab.id}}" class="tabs-item">
+                  <div class="{{tab.class}}"></div>
+                </a>
+                <p ng-show="{{tab.class == 'small'}}">{{tab.memory}}</p>
+              </li>  
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-xs-12">
+          <a href="#" class="green-but">Go / Code</a>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  <section class="sec06">
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-xs-12">
+          <div class="date">
+            <p>10 Nov 2016</p>
+          </div>
+          
+          <h2>Sneak peak at what’s coming <strong>Nov 2016</strong></h2>
+          
+          <div class="coming-all-txt">
+            <p>
+              This past month has been crazy - you guys have been great in providing feedback. With so many things to do, here’s quick summary of what’s to come in the next few weeks: Price...
+            </p>
+          </div>
+          
+        </div>
+        
+        <div class="col-xs-12">
+          <a href="#" class="green-but">Go / Code</a>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  <section class="sec07">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Got 5 Minutes? <strong>Set Up Your Digital Garage Now</strong></h2>
+          <div class="all-digital">
+            <div class="digital-left">
+              <img src="img/timer.png" alt="timer">
+            </div>
+            <div class="digital-right">
+              <p>By signing up, you agree to the <strong>Terms of Service</strong></p>
+              <a href="#" class="green-but">Go / Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+</main>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      
+      <div ng-repeat="link in footerlinks" class="col-xs-6 col-sm-6 col-md-3">
+        <div class="footer__links">
+          <div class="footer__icon footer__icon_{{link.class}}"></div>
+          <h5>{{link.title}}</h5>
+          <ul>
+            <li ng-repeat="sublink in link.links">
+              <a href="#">{{sublink}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="col-xs-12">
+        <div class="coppy">
+          <p>
+            &copy; 2016 The Digital Garage, LLC All rights reserved.
+          </p>
+        </div>
+       <ul class="social">
+          <li ng-repeat="icon in icons">
+            <a href="#" >
+              <i class="{{icon.class}}" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="/node_modules/angular/angular.js"></script>
+<script src="/js/app.js"></script>
+<script src="/models/model.js"></script>
+<script src="/controllers/controller.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!-- /JavaScript -->
+</body>
+
+</html>

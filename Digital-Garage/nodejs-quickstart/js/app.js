@@ -1,0 +1,1 @@
+var digitalGarageApp = angular.module('digitalGarageApp',[]);

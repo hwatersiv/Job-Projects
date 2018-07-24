@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-img {
+  padding: 5px;
+}
+
+.input-container {
+  margin: 10px;
+}
+
+.login-input {
+  width: 100%;
+  font-size: 1.75em;
+}
+
+.login-button {
+  height: 40px;
+  width: 30%;
+  font-size: 1.25em;
+  margin:auto;
+}
+
+.change-password {
+  margin-top: 10px;
+}

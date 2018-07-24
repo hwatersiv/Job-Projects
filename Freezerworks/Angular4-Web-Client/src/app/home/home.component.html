@@ -1,0 +1,21 @@
+<fwnavbar></fwnavbar>
+<br>
+<mat-accordion class='home-container'>
+
+  <mat-expansion-panel *ngFor='let section of sections'
+                       (opened)='togglePanel(section.toggleVar)'
+                       [expanded]='panelState === section.toggleVar'
+                       hideToggle='true'>
+    <mat-expansion-panel-header expandedHeight='48px'>
+      {{section.title}}
+    </mat-expansion-panel-header>
+    <mat-nav-list>
+      <mat-list-item *ngFor='let option of section.options'>
+        <a matLine [routerLink]="[option.route]">
+          {{option.optionTitle}}
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-expansion-panel>
+
+</mat-accordion>
